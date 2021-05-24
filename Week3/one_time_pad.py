@@ -2,7 +2,7 @@
 Complete the lines that have TODO: comments above them.
 """
 
-from helper_functions import FIX_ME
+from helper_functions import binary, FIX_ME
 from string_with_spaces import str_to_spaces
 from string_to_ascii_codes import str_to_ascii_codes
 from string_to_hex import str_to_hex
@@ -46,6 +46,13 @@ def one_time_pad(plaintext, key):
 
     print('Performing XOR')
     # 7. Perform an XOR on each plaintext character and key then save the result.
+    for i in range(len(plaintext)):
+        plaintext_ascii_code = ord(plaintext[i])
+        key_ascii_code = ord(key[i])
+        print(f'The bitwise XOR of {binary(plaintext_ascii_code)} and {binary(key_ascii_code)} is: ')
+        result = xor(plaintext_ascii_code, key_ascii_code)
+        print(result)
+
     temporary_list = []
 
     for i in range(len(plaintext)):
@@ -53,15 +60,16 @@ def one_time_pad(plaintext, key):
         plaintext_ascii_code = ord(plaintext[i])
         key_ascii_code = ord(key[i])
 
-        # TODO: Perform an XOR.
-        ciphertext_ascii_code = FIX_ME('TODO: Perform an XOR')
+        # Perform an XOR.
+        # ciphertext_ascii_code = FIX_ME(' Perform an XOR')
+        ciphertext_ascii_code = plaintext_ascii_code ^ key_ascii_code
 
         # TODO: Convert the ciphertext ascii code back to a character.
-        ciphertext_character = '?'  # TODO: Convert ciphertext_ascii_code back to a character.
-        
-        # TODO: Add the character to your temporary list
-        FIX_ME(ciphertext_character)
+        ciphertext_character = chr(ciphertext_ascii_code)  # Convert ciphertext_ascii_code back to a character.
 
+        # TODO: Add the character to your temporary list
+        #FIX_ME(ciphertext_character)
+        temporary_list += ciphertext_character
     # Print the contents of your temporary list
     print(f'Temporary List: {temporary_list}')
 
@@ -82,10 +90,10 @@ def one_time_pad(plaintext, key):
     str_to_spaces(ciphertext)
 
 
-
 if __name__ == '__main__':
     # Call/run the function and check the output
     one_time_pad('hello', 'PWN3D')
+    one_time_pad('win brain', 'theonetim')
 
     # TODO: Email me with your answer for this output.
     # one_time_pad('YOUR FULL NAME GOES HERE', 'theonetimepadismucheasierwithcomputers')

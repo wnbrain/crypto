@@ -21,7 +21,7 @@ def password_check(password):
 # Defines a function called 'and' which takes two integers, prints their binary equivalent, then prints the result of the binary (bitwise) AND operation.
 # NOTE: We can't call this function 'and' because that name is reserved in Python. We also can't call this file and.py for the same reason.
 def bitwise_and(integer_a, integer_b):
-    print(f'The bitwise AND of {binary(integer_a)} and {binary(integer_b)} is: ')
+    print(f"The bitwise AND of {binary(integer_a)} and {binary(integer_b)} is: ")
     result = integer_a & integer_b
     print(f'Result: {binary(result)}')
     return result
